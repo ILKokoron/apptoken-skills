@@ -1,0 +1,3 @@
+[submodule "skills/benchmark-test/lib/wrapped-native"]
+	path = skills/benchmark-test/lib/wrapped-native
+	url = https://github.com/limitbreakinc/wrapped-native

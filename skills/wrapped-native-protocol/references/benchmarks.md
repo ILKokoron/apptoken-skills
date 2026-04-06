@@ -35,3 +35,18 @@ Average post-merge gas price: 21.6 gwei
 The official WNATIVE address contains 8 zero-bytes, providing an additional 96 gas in calldata savings per call. Accounting for this, an estimated additional $1.2M would have been saved.
 
 Benchmarks cover only interfaces shared between WETH9 and WNATIVE. Features unique to WNATIVE (depositTo, withdrawSplit, permits) are not included since they have no WETH9 equivalent.
+
+## WNATIVE-Exclusive Function Benchmarks
+
+These functions have no WETH9 equivalent and are benchmarked as absolute gas costs.
+
+| Function | Warm Account (gas) | Cold Account (gas) |
+|---|---|---|
+| `depositTo` | 50,213 | 68,171 |
+| `withdrawToAccount` | 53,717 | 54,003 |
+| `withdrawSplit` (2 recipients) | 73,857 | — |
+| `withdrawSplit` (3 recipients) | 89,484 | — |
+| `revokeMyOutstandingPermits` | 57,773 | — |
+| `revokeMyNonce` | 61,555 | — |
+
+Benchmarks run with Foundry `--via-ir` flag. Each warm account test assumes prior storage writes; cold account tests start from zero balance.
